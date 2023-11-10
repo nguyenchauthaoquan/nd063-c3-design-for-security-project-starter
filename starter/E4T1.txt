@@ -6,5 +6,5 @@
 3. Set stronger password complexity
 
 # Neither instance should have had access to the secret recipes bucket, in the even that instance API credentials were compromised how could we have prevented access to sensitive data.
-1. This will remove secret bucket access
+1. This will not allow the attack instance access to the secret bucket
 2. Policies for s3 bucket should be specified to explicit free bucket name access.

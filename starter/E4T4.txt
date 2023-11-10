@@ -4,11 +4,11 @@ We should remove the ssh from the website hosting instance or data communication
 Use systems manager if necessary.
 
 # Assuming the IAM permissions for the S3 bucket are still insecure, would creating VPC private endpoints for S3 prevent the unauthorized access to the secrets bucket.
-It won't prevent the unauthorized access to the secrets buckets and will make communication
-traffic of services within VCP to S3 to stay within AWS network and not public internet
+It won't prevent the unauthorized access to the secrets buckets, and it will also make communication
+traffic of services within VCP to S3 to stay within AWS network and non-public internet
 
 # Will applying default encryption setting to the s3 buckets encrypt the data that already exists?
-Only the newly uploaded objects can be encrypted, the existed objects are not affected
+Only the recent uploaded objects can be encrypted, the existed objects are not affected
 
 # What would happen if the original cloud formation templates are applied to this environment.
-All the resources affected by changes via a CLI application or console will get to the original state.
+All the resources affected by changes via a CLI application (AWS cloud shell) or management console will get to the original state.
