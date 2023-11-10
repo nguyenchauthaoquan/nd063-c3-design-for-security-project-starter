@@ -2,4 +2,18 @@ Based on the architecture diagram, and the steps you have taken so far to upload
 
 # Poor practice 1
 
+The IAM roles (InstanceRole) with full s3 access policies is assigned to both untrusted instance and trusted instance, so both instances can access free recipes bucket with upload, remove, view and update data.
+The access to the s3 bucket must be specified by a seperate roles with approriate permissions needed for specific buckets
+
 # Poor practice 2
+As mentioned in Poor practice 1, the IAM role (InstanceRole)  has full access to any s3 buckets, so the IAM roles should be specific to the list of resources and actions performed upon them.
+
+# Poor practice 3
+All the private network routes of the VPC have destination CIDR block 0.0.0.0/0. If there is a breach into the resource in the subnet configured within the private routing table, attackers has an option to transfer information to any IP address within VPC or outside of it.
+
+# Poor practice 4
+3 Security Groups (WebAppSG, AppLoadBalancerSG, AttackInstanceSG) have both inbound and outbound rules configured the CIDR block 0.0.0.0/0. This gives a possibility of communication from/to any IP address leaving
+unexpected connections for attackers.
+
+# Poor practice 5
+WebAppSG has 5000 and 8080 ports opened. This provides HTTP base communication. As a publicly facing instance, it should be configured with 443 port for HTTPS or 80 port for HTTP based communications.
